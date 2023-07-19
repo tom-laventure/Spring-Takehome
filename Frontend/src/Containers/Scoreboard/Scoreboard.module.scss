@@ -1,0 +1,23 @@
+.scoreboard{
+    @apply flex justify-center flex-col w-full max-w-lg m-auto border border-black border-solid p-5;
+
+    &--scores{
+        @apply w-full;
+    }
+
+    &--add-user{
+        @apply flex w-full justify-end mt-1;
+    }
+
+    &--headers{
+        @apply flex justify-between;
+
+        button{
+            @apply bg-inherit py-0
+        }
+
+        &__name{
+            @apply w-full;
+        }
+    }
+}
