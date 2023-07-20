@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('Age');
-            $table->integer('Points');
-            $table->string('Address');
+            $table->string('age');
+            $table->integer('points');
+            $table->string('address');
         });
     }
 

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Requests\StoreUserScoreRequest;
 use App\Http\Requests\UpdateUserScoreRequest;
 use App\Models\UserScore;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\UserScoreCollection;
 
 class UserScoreController extends Controller
 {
@@ -14,15 +15,10 @@ class UserScoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        // try {
-        //     $dbconnect = DB::connection()->getPDO();
-        //     $dbname = DB::connection()->getDatabaseName();
-        //     echo "Connected successfully to the database. Database name is :".$dbname;
-        //  } catch(Exception $e) {
-        //     echo "Error in connecting to the database";
-        //  }
-     }
+    public function index()
+    {
+        return new UserScoreCollection(UserScore::all());
+    }
     /**
      * Show the form for creating a new resource.
      *
