@@ -9,7 +9,7 @@ use App\Models\UserScore;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\UserScoreCollection;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Log;
 
 class UserScoreController extends Controller
 {
@@ -25,7 +25,26 @@ class UserScoreController extends Controller
         return new UserScoreCollection(UserScore::where('name', 'like', '%' . $search . '%')->orderByDesc('points')->get());
     }
 
-    
+
+    public function groupedByScore()
+    {
+        $userScores = UserScore::select('points')
+            ->selectRaw('GROUP_CONCAT(name) as names')
+            ->selectRaw('AVG(age) as average_age')
+            ->groupBy('points')
+            ->get();
+
+
+        $result = [];
+
+        foreach ($userScores as $userScore) {
+            $result[(string) $userScore->points]['names'] = explode(',', $userScore->names);
+            $result[(string) $userScore->points]['average_age'] = (int) $userScore->average_age;
+        }
+
+        return $result;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
