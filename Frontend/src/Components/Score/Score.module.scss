@@ -1,3 +1,17 @@
 .score{
-    @apply w-full flex justify-around items-center;
+    @apply w-full;
+
+    &--name{
+        @apply mx-4 ;
+    }
+
+    &--point-buttons{
+        button{
+            @apply mx-2;
+        }
+    }
+
+    &--points{
+        @apply text-center;
+    }
 }

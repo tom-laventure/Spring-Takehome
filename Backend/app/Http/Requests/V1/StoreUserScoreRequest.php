@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class StoreUserScoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreUserScoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required'],
+            'address' => ['required'],
+            'points' => ['required'],
+            'age' => ['required']
         ];
     }
 }

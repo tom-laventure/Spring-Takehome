@@ -1,0 +1,7 @@
+.search-bar{
+    @apply flex items-center w-1/2 mx-auto mb-4;
+    
+    input{
+        @apply mx-2
+    }
+}

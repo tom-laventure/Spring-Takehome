@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Requests\StoreUserScoreRequest;
-use App\Http\Requests\UpdateUserScoreRequest;
+use App\Http\Requests\V1\StoreUserScoreRequest;
+use App\Http\Requests\V1\UpdateUserScoreRequest;
+use App\Http\Resources\V1\UserScoreResource;
 use App\Models\UserScore;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\UserScoreCollection;
+use Illuminate\Http\Request;
+
 
 class UserScoreController extends Controller
 {
@@ -15,10 +18,14 @@ class UserScoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new UserScoreCollection(UserScore::all());
+        $search = $request->query('search');
+
+        return new UserScoreCollection(UserScore::where('name', 'like', '%' . $search . '%')->orderByDesc('points')->get());
     }
+
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +44,7 @@ class UserScoreController extends Controller
      */
     public function store(StoreUserScoreRequest $request)
     {
-        //
+        return new UserScoreResource(UserScore::create($request->all()));
     }
 
     /**
@@ -71,7 +78,7 @@ class UserScoreController extends Controller
      */
     public function update(UpdateUserScoreRequest $request, UserScore $userScore)
     {
-        //
+        $userScore->update($request->all());
     }
 
     /**
@@ -82,6 +89,6 @@ class UserScoreController extends Controller
      */
     public function destroy(UserScore $userScore)
     {
-        //
+        $userScore->delete();
     }
 }

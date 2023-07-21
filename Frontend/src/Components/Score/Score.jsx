@@ -1,25 +1,45 @@
-import PropType from 'prop-types'
-import styles from './Score.module.scss'
+import PropType from "prop-types";
+import styles from "./Score.module.scss";
+import { useState } from "react";
+import DisplayUserPopup from "../Common/Popups/DisplayUserPopup/DisplayUserPopup";
 
-const Score = ({name, points, id}) => {
-    
+const Score = ({ name, points, age, address, id, updateScores, index, deleteScore }) => {
+	const [userDetails, setUserDetails] = useState(false);
 
-    return (
-        <div className={styles['score']}>
-            <button>X</button>
-            <h3>{name}</h3>
-            <button>+</button>
-            <button>-</button>
-            <div>{points} points</div>
-            {id}
-        </div>
-      );
-}
+	return (
+		<tr className={styles["score"]}>
+			<td>
+				<button onClick={deleteScore}>X</button>
+			</td>
+			<td className={styles["score--name"]}>
+				<h3 onClick={() => setUserDetails(true)}>{name}</h3>
+			</td>
+			<td className={styles["score--point-buttons"]}>
+				<button onClick={() => updateScores(id, 1, index)}>+</button>
+				<button onClick={() => updateScores(id, -1, index)}>-</button>
+			</td>
+			<td>
+				<div className={styles["score--points"]}>{points} points</div>
+			</td>
+			{userDetails && (
+				<DisplayUserPopup
+					age={age}
+					points={points}
+					address={address}
+					name={name}
+					close={() => setUserDetails(false)}
+				/>
+			)}
+		</tr>
+	);
+};
 
 Score.propTypes = {
-    name: PropType.string,
-    points: PropType.number,
-    id: PropType.string
-}
- 
+	name: PropType.string,
+	points: PropType.number,
+	id: PropType.number,
+	updateScores: PropType.func,
+	index: PropType.number,
+};
+
 export default Score;

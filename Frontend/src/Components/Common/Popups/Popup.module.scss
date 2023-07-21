@@ -1,0 +1,32 @@
+.popup{
+    @apply w-full max-w-[400px] h-auto bg-white p-8;
+
+    &--container{
+        @apply absolute w-full h-screen bg-opacity-10 bg-black bottom-0 right-0;
+        @apply flex justify-center items-center;
+    }
+
+    &--form{
+        @apply flex flex-col;
+
+        label{
+            @apply mt-2;
+        }
+    }
+
+    &--input-group{
+        @apply flex w-full;
+    }
+
+    &--create-user{
+        @apply ml-auto my-6;
+    }
+
+    &--label-group{
+        @apply my-2;
+
+        label{
+            @apply font-semibold;
+        }
+    }
+}
