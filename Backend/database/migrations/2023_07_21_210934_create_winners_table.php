@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_scores', function (Blueprint $table) {
+        Schema::create('winners', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->string('age');
+            $table->unsignedBigInteger('user_id');
             $table->integer('points');
-            $table->string('address');
-            $table->string('QR_code')->nullable();
+            $table->timestamp('won_at');
+
+            $table->foreign('user_id')->references('id')->on('user_scores');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_scores');
+        Schema::dropIfExists('winners');
     }
 };

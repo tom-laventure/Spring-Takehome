@@ -8,8 +8,8 @@ use App\Http\Resources\V1\UserScoreResource;
 use App\Models\UserScore;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\UserScoreCollection;
+use App\Jobs\QRJob;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class UserScoreController extends Controller
 {
@@ -63,7 +63,10 @@ class UserScoreController extends Controller
      */
     public function store(StoreUserScoreRequest $request)
     {
-        return new UserScoreResource(UserScore::create($request->all()));
+        $userScore = UserScore::create($request->all());
+        QRJob::dispatch($userScore);
+
+        return new UserScoreResource($userScore);
     }
 
     /**

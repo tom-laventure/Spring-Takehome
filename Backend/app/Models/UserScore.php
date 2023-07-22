@@ -13,6 +13,12 @@ class UserScore extends Model
         'name',
         'address',
         'points',
-        'age'
+        'age',
+        'QR_code'
     ];
+
+    public function winners()
+    {
+        return $this->belongsTo(Winner::class);
+    }
 }
