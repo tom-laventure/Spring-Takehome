@@ -45,7 +45,7 @@ Reset User Scores to 0
 
 Run scheduled commands
 
-`php artisan schedule:work`
+`php artisan queue:work`
 
 ## API's
 
