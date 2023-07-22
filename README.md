@@ -51,6 +51,10 @@ Run scheduled commands
 
 Most API's can be tested from the frontend application
 
-If you would like to get a list of the current winners in the winners table, start the backend server and visit
+View the list of Winners in the winners table
 
 `/api/v1/winners`
+
+Get Users info grouped by score and include the average age of the users
+
+`/api/v1/user-scores/grouped-by-score`
