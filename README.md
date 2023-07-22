@@ -47,6 +47,8 @@ Run scheduled commands
 
 `php artisan queue:work`
 
+`php artisan schedule:work`
+
 ## API's
 
 Most API's can be tested from the frontend application
