@@ -9,7 +9,8 @@ class Winner extends Model
 {
     use HasFactory;
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function userscore()
+    {
+        return $this->belongsTo(UserScore::class, 'user_id');
     }
 }
