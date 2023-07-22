@@ -19,7 +19,8 @@ class UserScoreResource extends JsonResource
             'name' => $this->name,
             'age' => $this->age,
             'address' => $this->address,
-            'points' => $this->points
+            'points' => $this->points,
+            'QRCode' => $this->QR_code
         ];
     }
 }

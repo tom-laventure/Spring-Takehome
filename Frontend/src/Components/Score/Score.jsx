@@ -3,7 +3,17 @@ import styles from "./Score.module.scss";
 import { useState } from "react";
 import DisplayUserPopup from "../Common/Popups/DisplayUserPopup/DisplayUserPopup";
 
-const Score = ({ name, points, age, address, id, updateScores, index, deleteScore }) => {
+const Score = ({
+	name,
+	points,
+	age,
+	address,
+	id,
+	updateScores,
+	index,
+	deleteScore,
+	qrCode,
+}) => {
 	const [userDetails, setUserDetails] = useState(false);
 
 	return (
@@ -28,6 +38,7 @@ const Score = ({ name, points, age, address, id, updateScores, index, deleteScor
 					address={address}
 					name={name}
 					close={() => setUserDetails(false)}
+					qrCode={qrCode}
 				/>
 			)}
 		</tr>

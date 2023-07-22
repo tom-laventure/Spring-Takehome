@@ -101,6 +101,7 @@ const Scoreboard = () => {
 								address={item.address}
 								index={key}
 								deleteScore={() => deleteScore(item.id)}
+								qrCode={item.QRCode}
 							/>
 						);
 					})}

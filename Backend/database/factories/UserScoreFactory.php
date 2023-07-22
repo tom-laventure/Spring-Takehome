@@ -19,12 +19,14 @@ class UserScoreFactory extends Factory
         $name = $this->faker->name();
         $address = $this->faker->address();
         $age = $this->faker->numberBetween(10, 30);
+        $QRCode = 'https://api.qrserver.com/v1/create-qr-code/?data=' . $address . '&size=150x150';
 
         return [
             'name' => $name,
             'address' => $address,
             'points' => 0,
-            'age' => $age
+            'age' => $age,
+            'QR_code' => $QRCode
         ];
     }
 }

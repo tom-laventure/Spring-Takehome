@@ -30,7 +30,7 @@ class QRJob implements ShouldQueue
      */
     public function handle()
     {
-        $QRCode = 'http(s)://api.qrserver.com/v1/create-qr-code/?data=' . $this->userScore->address . '&size=150x150';
+        $QRCode = 'https://api.qrserver.com/v1/create-qr-code/?data=' . $this->userScore->address . '&size=150x150';
 
         \Log::info('QR Code: ' . $QRCode);
 

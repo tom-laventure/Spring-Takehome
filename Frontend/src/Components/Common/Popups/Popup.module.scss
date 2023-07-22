@@ -23,7 +23,11 @@
     }
 
     &--label-group{
-        @apply my-2;
+        @apply my-2 flex flex-col;
+
+        img{
+            @apply max-w-[100px] h-auto mt-2;
+        }
 
         label{
             @apply font-semibold;
