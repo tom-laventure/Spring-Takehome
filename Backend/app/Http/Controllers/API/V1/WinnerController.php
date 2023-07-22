@@ -17,7 +17,9 @@ class WinnerController extends Controller
      */
     public function index()
     {
-        return new WinnerCollection(Winner::all());
+        $winners = Winner::with('userscore')->get();
+
+        return new WinnerCollection($winners);
     }
 
     /**

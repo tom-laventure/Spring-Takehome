@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Models\UserScore;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class WinnerResource extends JsonResource
@@ -15,9 +16,11 @@ class WinnerResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->user_id,
+            'id' => $this->id,
             'points' => $this->points,
-            'wonAt' => $this->won_at
+            'wonAt' => $this->won_at,
+            'userId' => $this->user_id,
+            'username' => $this->userscore->name
         ];
     }
 }
