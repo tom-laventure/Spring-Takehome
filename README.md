@@ -27,6 +27,9 @@ DB_PORT=3306
 DB_DATABASE=spring_takehome
 DB_USERNAME={username}
 DB_PASSWORD={password}
+
+//update QUEUE_CONNECTION to database
+QUEUE_CONNECTION=database
 ```
 
 run migrations and seed the database
