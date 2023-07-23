@@ -39,6 +39,10 @@ run migrations and seed the database
 
 `php artisan migrate:fresh --seed`
 
+run migrations to create the testing database
+
+` php artisan migrate:fresh --database=mysql_testing --seed`
+
 start the server
 
 `php artisan serve`
