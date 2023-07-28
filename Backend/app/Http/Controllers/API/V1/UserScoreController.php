@@ -46,16 +46,6 @@ class UserScoreController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreUserScoreRequest  $request
@@ -67,28 +57,6 @@ class UserScoreController extends Controller
         QRJob::dispatch($userScore);
 
         return new UserScoreResource($userScore);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\UserScore  $userScore
-     * @return \Illuminate\Http\Response
-     */
-    public function show(UserScore $userScore)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\UserScore  $userScore
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(UserScore $userScore)
-    {
-        //
     }
 
     /**
