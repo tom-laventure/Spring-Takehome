@@ -4,12 +4,12 @@ namespace Tests\Feature;
 
 use App\Http\Controllers\API\V1\UserScoreController;
 use App\Models\UserScore;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class UserScoreTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     public function testGroupedByScore()
     {
@@ -56,8 +56,7 @@ class UserScoreTest extends TestCase
         UserScore::create(['name' => 'Emma', 'points' => 25, 'age' => 18, 'address' => '123 fake street']);
         UserScore::create(['name' => 'Noah', 'points' => 25, 'age' => 18, 'address' => '123 fake street']);
         UserScore::create(['name' => 'Olivia', 'points' => 25, 'age' => 18, 'address' => '123 fake street']);
-
-
+    
         $response = $this->get('/api/v1/user-score');
         $response->assertStatus(200);
         $response->assertJsonCount(3, 'data'); // expect all three users to be returned
