@@ -4,10 +4,12 @@ import Score from "../../Components/Score/Score";
 import instance from "../../Assets/axios/axios-instance";
 import CreateUserPopup from "../../Components/Common/Popups/CreateUserPopup/CreateUserPopup";
 import SearchBar from "../../Components/SearchBar/SearchBar";
+import DisplayUserPopup from "../../Components/Common/Popups/DisplayUserPopup/DisplayUserPopup";
 
 const Scoreboard = () => {
 	const [scores, setScores] = useState([]);
 	const [addUser, setAddUser] = useState(false);
+	const [displayUser, setDisplayUser] = useState(null);
 	const controller = new AbortController();
 
 	useEffect(() => {
@@ -102,6 +104,7 @@ const Scoreboard = () => {
 								index={key}
 								deleteScore={() => deleteScore(item.id)}
 								qrCode={item.QRCode}
+								displayUser={setDisplayUser}
 							/>
 						);
 					})}
@@ -114,6 +117,16 @@ const Scoreboard = () => {
 				<CreateUserPopup
 					close={() => setAddUser(false)}
 					setUsers={setScores}
+				/>
+			)}
+			{displayUser && (
+				<DisplayUserPopup
+					age={displayUser.age}
+					points={displayUser.points}
+					address={displayUser.address}
+					name={displayUser.name}
+					close={() => setDisplayUser(null)}
+					qrCode={displayUser.qrCode}
 				/>
 			)}
 		</div>

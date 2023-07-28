@@ -1,7 +1,5 @@
 import PropType from "prop-types";
 import styles from "./Score.module.scss";
-import { useState } from "react";
-import DisplayUserPopup from "../Common/Popups/DisplayUserPopup/DisplayUserPopup";
 
 const Score = ({
 	name,
@@ -13,16 +11,27 @@ const Score = ({
 	index,
 	deleteScore,
 	qrCode,
+	displayUser,
 }) => {
-	const [userDetails, setUserDetails] = useState(false);
-
 	return (
 		<tr className={styles["score"]}>
 			<td>
 				<button onClick={deleteScore}>X</button>
 			</td>
 			<td className={styles["score--name"]}>
-				<h3 onClick={() => setUserDetails(true)}>{name}</h3>
+				<h3
+					onClick={() =>
+						displayUser({
+							age: age,
+							points: points,
+							address: address,
+							name: name,
+							qrCode: qrCode
+						})
+					}
+				>
+					{name}
+				</h3>
 			</td>
 			<td className={styles["score--point-buttons"]}>
 				<button onClick={() => updateScores(id, 1, index)}>+</button>
@@ -31,16 +40,6 @@ const Score = ({
 			<td>
 				<div className={styles["score--points"]}>{points} points</div>
 			</td>
-			{userDetails && (
-				<DisplayUserPopup
-					age={age}
-					points={points}
-					address={address}
-					name={name}
-					close={() => setUserDetails(false)}
-					qrCode={qrCode}
-				/>
-			)}
 		</tr>
 	);
 };
