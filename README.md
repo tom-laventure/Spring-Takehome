@@ -28,7 +28,7 @@ DB_DATABASE=spring_takehome
 DB_USERNAME={username}
 DB_PASSWORD={password}
 
-DB_CONNECTION=mysql_testing
+DB_CONNECTION_TEST=mysql_testing
 DB_DATABASE_TEST=spring_takehome_test
 
 //update QUEUE_CONNECTION to database
